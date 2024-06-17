@@ -1,0 +1,26 @@
+//-------------------------Colors-----------------------------//
+
+//Light mode
+$color-lightmode-very-dark-blue: hsl(200, 15%, 8%);
+$color-lightmode-dark-gray: hsl(0, 0%, 52%);
+$color-lightmode-very-light-gray: hsl(0, 0%, 98%);
+
+//Dark mode
+$color-darkmode-very-dark-blue: hsl(207, 26%, 17%);
+$color-darkmode-dark-blue: hsl(209, 23%, 22%);
+
+//Neutral
+$color-neutral-white: hsl(0, 0%, 100%);
+
+//-------------------------Typography-----------------------------//
+
+$base-font-size: 16px;
+$primary-font-nunito-sans: "Nunito Sans", sans-serif;
+$font-weight-thin: 300;
+$font-weight-medium: 600;
+$font-weight-bold: 800;
+
+//-------------------------Breakpoints-----------------------------//
+
+$first-breakpoint: 52.375em; //838px
+$second-breakpoint: 90em; //1440px
