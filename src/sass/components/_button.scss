@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  height: 3rem;
+  width: 7rem;
+  background-color: $color-neutral-white;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 2px;
+
+  &__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transform: rotate(-20deg);
+    margin-right: 0.6rem;
+  }
+  &--light-mode {
+    &:hover {
+      cursor: pointer;
+      background-color: $color-input-hover;
+    }
+    &:focus {
+      box-shadow: $shadow-box-bottom;
+    }
+    &:active {
+      box-shadow: $shadow-box-bottom;
+      animation: click 0.3s ease-in-out;
+    }
+  }
+}

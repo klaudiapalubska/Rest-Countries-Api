@@ -4,6 +4,7 @@
 $color-lightmode-very-dark-blue: hsl(200, 15%, 8%);
 $color-lightmode-dark-gray: hsl(0, 0%, 52%);
 $color-lightmode-very-light-gray: hsl(0, 0%, 98%);
+$color-input-hover: hsla(0, 28%, 92%, 0.774);
 
 //Dark mode
 $color-darkmode-very-dark-blue: hsl(207, 26%, 17%);
@@ -19,6 +20,11 @@ $primary-font-nunito-sans: "Nunito Sans", sans-serif;
 $font-weight-thin: 300;
 $font-weight-medium: 600;
 $font-weight-bold: 800;
+
+//-------------------------Shadow-box-----------------------------//
+
+$shadow-box-bottom: 0px 17px 9px -22px $color-lightmode-very-dark-blue;
+$shadow-box-light-mode: 6px 11px 32px -30px $color-lightmode-very-dark-blue;
 
 //-------------------------Breakpoints-----------------------------//
 

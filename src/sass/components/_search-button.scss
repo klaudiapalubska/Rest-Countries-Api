@@ -1,0 +1,94 @@
+.search {
+  &__field {
+    box-shadow: $shadow-box-light-mode;
+    background-color: $color-neutral-white;
+
+    &__icon {
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      margin-top: 1.2rem;
+      left: 3rem;
+      z-index: 2;
+    }
+    &__input {
+      border: none;
+      border-radius: 0.625em;
+      width: 75%;
+      max-width: 21rem;
+      height: 3.5rem;
+      padding-left: 5rem;
+      position: relative;
+      &::placeholder {
+        color: $color-lightmode-dark-gray;
+      }
+      &:active {
+        border-color: $color-lightmode-dark-gray;
+      }
+      &:hover {
+        background-color: $color-input-hover;
+        cursor: pointer;
+      }
+    }
+
+    &--2 {
+      &__input {
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0.625em;
+        align-items: center;
+        height: 1.5rem;
+        width: 50%;
+        max-width: 15rem;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
+        padding: 1rem 1.5rem;
+        background-color: $color-neutral-white;
+        box-shadow: $shadow-box-light-mode;
+        & p {
+          display: inline-block;
+        }
+        &:hover {
+          background-color: $color-input-hover;
+          cursor: pointer;
+        }
+      }
+
+      &__icon {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+    }
+  }
+}
+
+.filter-field {
+  &__select {
+    box-shadow: $shadow-box-light-mode;
+    border: none;
+    border-radius: 0.625em;
+    background-color: $color-neutral-white;
+    width: 55%;
+    max-width: 16rem;
+    height: 9.125rem;
+    padding: 0 1rem;
+    padding-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  &__option {
+    margin-bottom: 0.5rem;
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+    &:checked {
+      background-color: $color-input-hover;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

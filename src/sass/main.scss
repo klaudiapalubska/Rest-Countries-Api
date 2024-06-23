@@ -1,5 +1,13 @@
+@import "abstracts/animations";
 @import "abstracts/mixin";
 @import "abstracts/variables";
 
 @import "base/base";
 @import "base/typography";
+
+@import "components/button";
+@import "components/search-button";
+
+@import "layout/card-country";
+@import "layout/main-start";
+@import "layout/nav";

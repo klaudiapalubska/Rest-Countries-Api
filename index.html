@@ -17,8 +17,8 @@
   <body>
     <nav class="nav">
       <div class="nav__title"><h1 class="header">Where in the world?</h1></div>
-      <div class="nav__dark-mode">
-        <button class="button button--dark-mode">
+      <div class="nav__light-mode">
+        <button class="button button--light-mode">
           <img
             class="button__icon"
             src="src/img/regular-moon.svg"
@@ -41,16 +41,16 @@
             <input
               type="text"
               class="search__field__input"
-              value="Search for a country..."
+              placeholder="Search for a country..."
               required
             />
           </label>
 
-          <label class="search__field">
-            <div class="search__field__input">
+          <label class="search__field--2">
+            <div class="search__field--2__input">
               <p class="paragraph paragraph--2">Filter by Region</p>
               <img
-                class="search__field__icon"
+                class="search__field--2__icon"
                 src="src/img/chevron-down.svg"
                 alt="chevron down"
               />
@@ -61,7 +61,6 @@
             <select
               class="filter-field__select"
               name="System operacyjny"
-              multiple
               size="5"
             >
               <option class="filter-field__option">
@@ -82,24 +81,64 @@
             </select>
           </div>
         </div>
-
-        <div class="card-country">
-          <div class="card-country__img"></div>
-          <h2 class="header--2">{Country Name}</h2>
-          <span class="card-country__span">
-            <p class="paragraph paragraph--3">Population:</p>
-            <p class="paragraph paragraph--1">{Population}</p>
-          </span>
-          <span class="card-country__span">
-            <p class="paragraph paragraph--3">Region:</p>
-            <p class="paragraph paragraph--1">{Region}</p>
-          </span>
-          <span class="card-country__span">
-            <p class="paragraph paragraph--3">Capital:</p>
-            <p class="paragraph paragraph--1">{Capital}</p>
-          </span>
+      </div>
+      <div class="card">
+        <div class="card__country">
+          <div class="card__country__img"></div>
+          <div class="card__country__info">
+            <h2 class="header--2">Germany</h2>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Population:</p>
+              <p class="paragraph paragraph--3">81,770,900</p>
+            </span>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Region:</p>
+              <p class="paragraph paragraph--3">Europe</p>
+            </span>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Capital:</p>
+              <p class="paragraph paragraph--3">Berlin</p>
+            </span>
+          </div>
+        </div>
+        <div class="card__country">
+          <div class="card__country__img"></div>
+          <div class="card__country__info">
+            <h2 class="header--2">{Country Name}</h2>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Population:</p>
+              <p class="paragraph paragraph--3">{Population}</p>
+            </span>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Region:</p>
+              <p class="paragraph paragraph--3">{Region}</p>
+            </span>
+            <span class="card__country__span">
+              <p class="paragraph paragraph--1">Capital:</p>
+              <p class="paragraph paragraph--3">{Capital}</p>
+            </span>
+          </div>
         </div>
       </div>
     </main>
   </body>
 </html>
+
+<!--      <div class="card__country">
+          <div class="card__country__img"></div>
+          <div class="card__country__info">
+          <h2 class="header--2">{Country Name}</h2>
+          <span class="card__country__span">
+            <p class="paragraph paragraph--3">Population:</p>
+            <p class="paragraph paragraph--1">{Population}</p>
+          </span>
+          <span class="card__country__span">
+            <p class="paragraph paragraph--3">Region:</p>
+            <p class="paragraph paragraph--1">{Region}</p>
+          </span>
+          <span class="card__country__span">
+            <p class="paragraph paragraph--3">Capital:</p>
+            <p class="paragraph paragraph--1">{Capital}</p>
+          </span>
+          </div>
+        </div>-->
