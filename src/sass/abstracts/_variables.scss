@@ -15,7 +15,7 @@ $color-neutral-white: hsl(0, 0%, 100%);
 
 //-------------------------Typography-----------------------------//
 
-$base-font-size: 16px;
+$base-font-size: 16px; //first phone
 $primary-font-nunito-sans: "Nunito Sans", sans-serif;
 $font-weight-thin: 300;
 $font-weight-medium: 600;
@@ -28,5 +28,4 @@ $shadow-box-light-mode: 6px 11px 32px -30px $color-lightmode-very-dark-blue;
 
 //-------------------------Breakpoints-----------------------------//
 
-$first-breakpoint: 52.375em; //838px
-$second-breakpoint: 90em; //1440px
+$first-breakpoint: 50em; //800px

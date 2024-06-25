@@ -1,16 +1,18 @@
 .card {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(300px, 1fr)
-  ); /* Elastyczne kolumny */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: minmax(21rem, auto);
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
   &__country {
-    margin: 0 2rem;
+    margin: 0 auto;
     border-radius: 5px;
     background-color: $color-neutral-white;
     box-shadow: $shadow-box-light-mode;
+    max-width: 18.5rem;
+    min-width: 16.75rem;
     &__img {
       width: 100%;
       height: 50%;

@@ -3,5 +3,8 @@
   box-shadow: inset 0px 67px 28px -90px $color-lightmode-very-dark-blue;
   padding: 2rem 1rem;
   &__start {
+    @include responsive($first-breakpoint) {
+      margin-top: 1rem;
+    }
   }
 }
