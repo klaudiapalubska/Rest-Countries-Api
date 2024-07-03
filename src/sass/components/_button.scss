@@ -12,10 +12,13 @@
   &__icon {
     width: 1.2rem;
     height: 1.2rem;
-    transform: rotate(-20deg);
     margin-right: 0.6rem;
+    &--rotate {
+      transform: rotate(-20deg);
+    }
   }
-  &--light-mode {
+  &--light-mode,
+  &--back {
     &:hover {
       cursor: pointer;
       background-color: $color-input-hover;
