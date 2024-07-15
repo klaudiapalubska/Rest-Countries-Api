@@ -27,6 +27,8 @@
       }
       &:active {
         border-color: $color-lightmode-dark-gray;
+        box-shadow: $shadow-box-bottom;
+        animation: click 0.3s ease-in-out;
       }
       &:hover {
         background-color: $color-input-hover;

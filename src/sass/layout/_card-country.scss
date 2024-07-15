@@ -40,6 +40,9 @@
     &:hover {
       background-color: $color-input-hover;
       cursor: pointer;
+      & .card__country__img {
+        filter: brightness(0.7);
+      }
     }
   }
 }
