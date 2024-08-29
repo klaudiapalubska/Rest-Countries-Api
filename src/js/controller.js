@@ -1,4 +1,5 @@
 import { API_URL, defaultRegion } from "./config.js";
+
 const card = document.querySelector(".card");
 const countryInfo = document.querySelector(".main__country");
 const main = document.querySelector(".main__start");
@@ -14,6 +15,7 @@ const fieldsToFetch = [
   "currencies",
   "languages",
   "borders",
+  "region",
 ].join(",");
 
 const numberWithCommas = function (number) {
@@ -29,7 +31,7 @@ const createCountryObject = function (data) {
       : "N/A";
 
     return {
-      name: country.name.common,
+      name: country.name.common, // Zmiana na pobranie `common` nazwy kraju
       nativeName: nativeName,
       population: country.population,
       region: country.region,
@@ -46,6 +48,7 @@ const createCountryObject = function (data) {
         ? Object.values(country.languages).join(", ")
         : "N/A",
       borders: country.borders ? country.borders.join(", ") : "N/A",
+      region: country.region,
     };
   });
   return result.sort((a, b) => a.name.localeCompare(b.name));
@@ -64,17 +67,24 @@ const apiRequest = async function (fields) {
   }
 };
 
-const menuView = async function () {
+const menuView = async function (region = "") {
   try {
-    const data = await apiRequest(`all?fields=${fieldsToFetch}`);
-    const countries = createCountryObject(data);
+    const data = await apiRequest(`all`);
+    console.log(data);
+    const countries = createCountryObject(data).filter(
+      (country) =>
+        country.region.toLowerCase() === region.toLowerCase() || region === ""
+    );
 
     countries.forEach((country) => {
       const cardCountry = document.createElement("div");
       cardCountry.classList.add("card__country");
+
       cardCountry.innerHTML = `
         <img src="${country.flag}" alt="flag" class="card__country__img">
-        <div class="card__country__info" id="${country.name}">
+        <div class="card__country__info" id="${country.name
+          .replace(/\s+/g, "-")
+          .toLowerCase()}">
           <h2 class="header--2">${country.name}</h2>
           <span class="card__country__span">
             <p class="paragraph paragraph--1">Population:</p>
@@ -98,7 +108,7 @@ const menuView = async function () {
   }
 };
 
-menuView();
+menuView("");
 
 const countryInfoView = function () {
   card.addEventListener("click", async function (event) {
@@ -108,7 +118,7 @@ const countryInfoView = function () {
       if (targetCountry) {
         const countryId = targetCountry
           .querySelector(".card__country__info")
-          .id.replace(/\s+/g, "")
+          .id.replace(/-/g, " ")
           .toLowerCase();
 
         const data = await apiRequest(`name/${countryId}`);
@@ -181,7 +191,7 @@ const countryInfoView = function () {
               </div>
             </div>
           </div>`;
-          console.log(country.borders);
+          console.log(neighbours);
           countryInfo.appendChild(cardInfo);
         });
       }
@@ -191,6 +201,37 @@ const countryInfoView = function () {
   });
 };
 
+//reset strony glownej
+
+const reloadMainPage = function () {
+  document.querySelector(".card").innerHTML = "";
+};
+//obsluga przyciskow
+const searchContainer = document.querySelector(".search");
+const regionSearchList = document.querySelector(".search__filter-field");
+
+searchContainer.addEventListener("click", function (event) {
+  if (event.target.closest(".search__field")) {
+    // POTEM
+  }
+  if (event.target.closest(".search__field--2")) {
+    regionSearchList.classList.toggle("none-display");
+  }
+});
+
+searchContainer.addEventListener("change", function (event) {
+  if (event.target.closest(".filter-field__select")) {
+    let selectedValue = event.target.value.toLowerCase();
+    if (selectedValue == "america") selectedValue = "americas";
+
+    reloadMainPage();
+    menuView(selectedValue);
+
+    regionSearchList.classList.toggle("none-display");
+  }
+});
+
 countryInfoView();
 
+//apiRequest("all");
 //szukanie po kodzie przykład: alpha/co
