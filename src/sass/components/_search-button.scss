@@ -20,7 +20,7 @@
       padding-left: 5rem;
       position: relative;
       @include responsive($first-breakpoint) {
-        max-width: 30rem;
+        max-width: 28rem;
       }
       &::placeholder {
         color: $color-lightmode-dark-gray;

@@ -5,3 +5,7 @@
     @content;
   }
 }
+
+@mixin darkMode() {
+  background-color: $color-darkmode-very-dark-blue;
+}

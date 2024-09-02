@@ -42,7 +42,7 @@
       margin-top: 2rem;
       @include responsive($second-breakpoint) {
         margin-top: -1.5rem;
-        margin-left: 5rem;
+        margin-left: 15rem;
       }
     }
 
@@ -61,6 +61,7 @@
       display: flex;
       flex-wrap: wrap;
       margin-top: 1rem;
+      width: max-content;
       @include responsive($second-breakpoint) {
         margin-top: 0;
       }

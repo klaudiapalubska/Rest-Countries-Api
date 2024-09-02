@@ -70,7 +70,7 @@ const apiRequest = async function (fields) {
     const data = await res.json();
     return data;
   } catch (err) {
-    console.error("No neighbours ;(");
+    console.error("⚡Some data has not arrived");
     return []; // Return empty array or handle error as appropriate
   }
 };
@@ -100,7 +100,7 @@ const menuView = async function (search = "") {
   try {
     loadingSpin(); // Show spinner before starting the request
     backContainer.classList.add("none-display");
-    const data = await apiRequest(`all`);
+    const data = await apiRequest(`all?fields=${fieldsToFetch}`);
     console.log(data);
 
     const countries = createCountryObject(data).filter(
@@ -315,9 +315,6 @@ searchContainer.addEventListener("change", function (event) {
 countryInfoView();
 
 //dark mode
-//kółko ładujące poprawic miejsce w scss
-//poprawić wyświetlanie nazw kraju
-//poprawic ze sie rozjezdza serach
 
 //optymalizacja kodu + posprzątanie bałaganu xd
 //dokumentacja
