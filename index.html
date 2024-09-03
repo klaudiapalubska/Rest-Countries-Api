@@ -59,21 +59,30 @@
               />
             </div>
           </label>
-
           <div class="search__filter-field filter-field none-display">
-            <select
-              class="filter-field__select paragraph--2"
-              name="region"
-              size="5"
-            >
-              <option class="filter-field__option">Africa</option>
-              <option class="filter-field__option">America</option>
-              <option class="filter-field__option">Asia</option>
-              <option class="filter-field__option">Europe</option>
-              <option class="filter-field__option">Oceania</option>
-            </select>
+            <div class="filter-field__select paragraph--2">
+              <div class="filter-field__option">
+                <input type="radio" id="africa" name="region" value="Africa" />
+                <label for="africa">Africa</label>
+              </div>
+              <div class="filter-field__option">
+                <input type="radio" id="america" name="region" value="America" />
+                <label for="america">America</label>
+              </div>
+              <div class="filter-field__option">
+                <input type="radio" id="asia" name="region" value="Asia" />
+                <label for="asia">Asia</label>
+              </div>
+              <div class="filter-field__option">
+                <input type="radio" id="europe" name="region" value="Europe" />
+                <label for="europe">Europe</label>
+              </div>
+              <div class="filter-field__option">
+                <input type="radio" id="oceania" name="region" value="Oceania" />
+                <label for="oceania">Oceania</label>
+              </div>
+            </div>
           </div>
-        </div>
 
         <div class="card"></div>
       </div>

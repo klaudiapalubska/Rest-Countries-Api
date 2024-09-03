@@ -84,32 +84,51 @@
     background-color: $color-neutral-white;
     width: 50%;
     max-width: 16rem;
-    height: 9.125rem;
+    height: 10rem;
     padding: 0 1rem;
     padding-bottom: 0.5rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
     @include responsive($first-breakpoint) {
-      // position: absolute;
       right: 16px;
       margin-top: 0.5rem;
       width: 36%;
       max-width: 12rem;
     }
   }
+
   &__option {
     margin-bottom: 0.5rem;
     &:last-child {
-      margin-bottom: 1rem;
+      margin-bottom: 0.2rem;
     }
 
     &:first-child {
       margin-top: 1rem;
     }
-    &:checked {
-      background-color: $color-input-hover;
+
+    input[type="radio"] {
+      display: none;
     }
-    &:hover {
+
+    label {
+      display: block;
+      padding: 0.1rem;
+      border-radius: 0.375em;
+      background-color: $color-neutral-white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $color-input-hover;
+      }
+    }
+
+    input[type="radio"]:checked + label {
+      background-color: $color-input-hover;
     }
   }
 }
