@@ -5,10 +5,24 @@
   width: 120px; /* Szerokość */
   height: 120px; /* Wysokość */
   animation: spin 0.3s linear infinite; /* Animacja obrotu */
-  margin: auto; /* Wyśrodkowanie */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 10;
+
+  &__container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: fixed; /* Pin to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    background: rgba(
+      255,
+      255,
+      255,
+      0
+    ); /* Optional: Semi-transparent background */
+    z-index: 0; /* Ensure it stays on top of other elements */
+    pointer-events: none;
+  }
 }

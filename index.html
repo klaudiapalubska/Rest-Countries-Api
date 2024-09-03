@@ -15,6 +15,10 @@
     <script defer type="module" src="src/js/controller.js"></script>
   </head>
   <body>
+    <div class="loader__container">
+      <div class="loader none-display"></div>
+    </div>
+
     <nav class="nav">
       <div class="nav__title"><h1 class="header">Where in the world?</h1></div>
       <div class="nav__light-mode">
@@ -30,7 +34,6 @@
     </nav>
 
     <main class="main">
-      <div class="loader none-display"></div>
       <!--START-->
 
       <div class="main__start">
@@ -66,7 +69,12 @@
                 <label for="africa">Africa</label>
               </div>
               <div class="filter-field__option">
-                <input type="radio" id="america" name="region" value="America" />
+                <input
+                  type="radio"
+                  id="america"
+                  name="region"
+                  value="America"
+                />
                 <label for="america">America</label>
               </div>
               <div class="filter-field__option">
@@ -78,12 +86,17 @@
                 <label for="europe">Europe</label>
               </div>
               <div class="filter-field__option">
-                <input type="radio" id="oceania" name="region" value="Oceania" />
+                <input
+                  type="radio"
+                  id="oceania"
+                  name="region"
+                  value="Oceania"
+                />
                 <label for="oceania">Oceania</label>
               </div>
             </div>
           </div>
-</div>
+        </div>
         <div class="card"></div>
       </div>
 
