@@ -1,4 +1,5 @@
 .information {
+  background-color: $color-lightmode-very-light-gray;
   margin-top: 3rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -61,7 +62,8 @@
       display: flex;
       flex-wrap: wrap;
       margin-top: 1rem;
-      width: max-content;
+      width: 100%;
+      justify-content: center;
       @include responsive($second-breakpoint) {
         margin-top: 0;
       }
