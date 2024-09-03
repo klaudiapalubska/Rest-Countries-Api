@@ -22,7 +22,7 @@
       255,
       0
     ); /* Optional: Semi-transparent background */
-    z-index: 0; /* Ensure it stays on top of other elements */
+    z-index: 15; /* Ensure it stays on top of other elements */
     pointer-events: none;
   }
 }
