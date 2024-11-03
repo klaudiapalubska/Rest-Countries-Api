@@ -1,104 +1,15 @@
-import { API_URL, defaultRegion } from "./config.js";
+import { fieldsToFetch } from "./config.js";
+import { apiRequest } from "./connect.js";
+import { loadingSpin, numberWithCommas } from "./utils.js";
+import { createCountryObject, searchNeighbour } from "./model.js";
+import { countryInfo, main } from "./view.js";
 const backButton = document.querySelector(".button--back");
 const backContainer = document.querySelector(".main__country__back");
 const card = document.querySelector(".card");
-const countryInfo = document.querySelector(".main__country");
-const main = document.querySelector(".main__start");
-const loader = document.querySelector(".loader");
-const loadingSpin = function () {
-  loader.classList.remove("none-display");
-};
-const loadingSpinEnd = function () {
-  loader.classList.add("none-display");
-};
-
-const fieldsToFetch = [
-  "name",
-  "population",
-  "region",
-  "capital",
-  "flags",
-  "subregion",
-  "tld",
-  "currencies",
-  "languages",
-  "borders",
-  "region",
-].join(",");
-
-const numberWithCommas = function (number) {
-  return number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-};
-
-const createCountryObject = function (data) {
-  const result = data.map((country) => {
-    const nativeNameObj = country.name.nativeName;
-    const firstLangKey = nativeNameObj ? Object.keys(nativeNameObj)[0] : null;
-    const nativeName = firstLangKey
-      ? nativeNameObj[firstLangKey].official
-      : "N/A";
-
-    return {
-      name: country.name.common, // Zmiana na pobranie `common` nazwy kraju
-      nativeName: nativeName,
-      population: country.population,
-      region: country.region,
-      subRegion: country.subregion,
-      capital: country.capital ? country.capital[0] : "N/A",
-      flag: country.flags.png,
-      tld: country.tld ? country.tld.join(", ") : "N/A",
-      currencies: country.currencies
-        ? Object.values(country.currencies)
-            .map((currency) => `${currency.name} (${currency.symbol})`)
-            .join(", ")
-        : "N/A",
-      languages: country.languages
-        ? Object.values(country.languages).join(", ")
-        : "N/A",
-      borders: country.borders ? country.borders.join(", ") : "N/A",
-      region: country.region,
-    };
-  });
-  return result.sort((a, b) => a.name.localeCompare(b.name));
-};
-
-const apiRequest = async function (fields) {
-  try {
-    const res = await fetch(`${API_URL}${fields}`);
-    if (!res.ok) throw new Error(`Failed to fetch data: ${res.status}`);
-
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.error("⚡Some data has not arrived");
-    return []; // Return empty array or handle error as appropriate
-  }
-};
-
-const searchNeighbour = async function (codes) {
-  try {
-    // Upewnij się, że kody są przekazywane jako ciąg znaków oddzielony przecinkami
-    const codeString = codes
-      .split(",")
-      .map((code) => code.trim())
-      .join(",");
-
-    // Zbuduj odpowiedni URL z wieloma kodami
-    const data = await apiRequest(`alpha?codes=${codeString}`);
-
-    // Przetwarzanie danych - zwracanie tylko nazw krajów
-    const countryNames = data.map((country) => country.name.common);
-
-    return countryNames;
-  } catch (err) {
-    console.error(err.message);
-    return []; // Zwraca pustą tablicę w przypadku błędu
-  }
-};
 
 const menuView = async function (search = "") {
   try {
-    loadingSpin(); // Show spinner before starting the request
+    loadingSpin(true); // Show spinner before starting the request
     backContainer.classList.add("none-display");
     const data = await apiRequest(`all?fields=${fieldsToFetch}`);
     console.log(data);
@@ -139,7 +50,7 @@ const menuView = async function (search = "") {
   } catch (err) {
     console.error(err.message);
   } finally {
-    loadingSpinEnd(); // Ensure spinner hides even if an error occurs
+    loadingSpin(false); // Ensure spinner hides even if an error occurs
   }
 };
 
@@ -150,7 +61,7 @@ const countryInfoView = function () {
     try {
       const targetCountry = event.target.closest(".card__country");
       if (targetCountry) {
-        loadingSpin(); // Show spinner before processing
+        loadingSpin(true); // Show spinner before processing
         backContainer.classList.remove("none-display");
         const countryId = targetCountry
           .querySelector(".card__country__info")
@@ -240,14 +151,14 @@ const countryInfoView = function () {
     } catch (err) {
       console.error(err.message);
     } finally {
-      loadingSpinEnd(); // Ensure spinner hides even if an error occurs
+      loadingSpin(false); // Ensure spinner hides even if an error occurs
     }
   });
 };
 
-//reset strony glownej
+//reset main page
 
-//obsluga przyciskow
+//button services
 const searchContainer = document.querySelector(".search");
 const regionSearchList = document.querySelector(".search__filter-field");
 const searchField = document.querySelector(".search__field__input");
@@ -257,46 +168,41 @@ const reloadMainPage = function () {
 };
 
 backButton.addEventListener("click", function () {
-  // Ukryj widok szczegółów kraju i pokaż stronę główną
   countryInfo.classList.add("none-display");
   main.classList.remove("none-display");
 
-  // Ukryj przycisk "Back"
   backContainer.classList.add("none-display");
 
-  // Wyczyść zawartość widoku szczegółów kraju
   countryInfo.innerHTML = "";
 });
-// Funkcja do obsługi wyszukiwania
+
 function handleSearch() {
   const value = searchField.value.trim();
 
   reloadMainPage();
   menuView(value);
-  loadingSpinEnd();
+  loadingSpin(false);
 }
 
-// Obsługa kliknięcia w ikonę lupy lub zakończenia focusu
 searchContainer.addEventListener("click", function (event) {
   if (event.target.closest(".search__field__icon")) {
-    loadingSpin();
+    loadingSpin(true);
     handleSearch();
   } else if (event.target.closest(".search__field--2")) {
     regionSearchList.classList.toggle("none-display");
   }
 });
 
-// Obsługa naciśnięcia klawisza Enter w polu wyszukiwania
 searchField.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    loadingSpin();
+    loadingSpin(true);
     handleSearch();
-    event.preventDefault(); // Zapobiega domyślnemu działaniu, np. przesłaniu formularza
+    event.preventDefault();
   }
 });
-// Obsługa dotyku na urządzeniach mobilnych (Touch Events)
+
 searchField.addEventListener("touchend", function () {
-  loadingSpin();
+  loadingSpin(true);
   handleSearch();
 });
 
@@ -313,11 +219,3 @@ searchContainer.addEventListener("change", function (event) {
 });
 
 countryInfoView();
-
-//dark mode
-
-//optymalizacja kodu + posprzątanie bałaganu xd
-//dokumentacja
-
-//apiRequest("all");
-//szukanie po kodzie przykład: alpha/co

@@ -1,2 +1,15 @@
 export const API_URL = "https://restcountries.com/v3.1/";
-export const defaultRegion = "europe";
+
+export const fieldsToFetch = [
+  "name",
+  "population",
+  "region",
+  "capital",
+  "flags",
+  "subregion",
+  "tld",
+  "currencies",
+  "languages",
+  "borders",
+  "region",
+].join(",");
